@@ -1,52 +1,82 @@
+import { Flex, Heading, Text, Image } from "@chakra-ui/react";
+
+
 export default function Home() {
+ 
   return (
-    <div
-      style={{
-        background: 'linear-gradient(180deg, #FA9F42, #8B4513)', // Laranja → Marrom
-        height: '100vh', // ocupa a altura total da janela
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        width:"100%"
-      }}
+    <Flex
+      w='100%'
+      h='100%'
+      bg="linear-gradient(180deg, #FA9F42, #8B4513)" // Sintaxe do Chakra para gradiente
+      direction="column"
+      gap="4"
+      minH="100vh"
+      p="60px" // Padding aplicado ao container
+      
     >
-      <h1 style={{ fontSize: '90px', color: 'white', textAlign: 'center', marginBottom:"100px"}}>
-        Ana Paula de Souza da Silva Rodrigues
-      </h1>
-
-      <div
-        style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.15)', // leve transparência sobre o fundo
-          color: 'white',
-          padding: '30px',
-          borderRadius: '15px',
-          boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
-          maxWidth: '700px',
-          textAlign: 'left',
-          justifyContent: 'flex-start', // move o conteúdo para o lado esquerdo
-          alignItems: 'center',          // centraliza verticalmente
-          margin: "150px"
-        }}
+      {/* Usamos o componente <Heading> ao invés de <h1> com style.
+        As props (fontSize, color, mb) substituem o objeto style.
+      */}
+      <Flex
+      w='100%'
+      bg="linear-gradient(180deg, #ec9f05,#bf3100)" // Sintaxe do Chakra para gradiente
+      gap="4"
+      minH="100vh"
+      p="60px"
       >
-        <p style={{ fontSize: '18px', lineHeight: '1.5' }}>
-          Olá, que bom te ter por aqui! O meu nome não preciso nem dizer —
-          acredito que tenha acompanhado o texto acima.
-        </p>
+      <Flex
+      direction="column"
+      >
+      <Heading
+        as="h1"
+        fontSize="50px"
+        color="white"
+        mb="0.5%"
+        mt="30%"
+      >
+        Olá, sou a Paula.
+      </Heading>
 
-        <p style={{ fontSize: '18px', lineHeight: '1.5' }}>
-          Pois bem, conhecer o nome é essencial, mas talvez seja mais
-          interessante saber minhas habilidades e um pouco sobre mim.
-        </p>
+      {/* Usamos o componente <Text> ao invés de <p> com style.
+        Props (fontSize, w, mb) substituem o objeto style.
+        Adicionada a cor branca para consistência.
+      */}
+      <Text
+        fontSize="25px"
+        color="white"
+        mb="0.5%"
+        w="60%" // `w` é o atalho para `width`
+        mt="10%"
+      >
+        Disposta a aprender com o mundo da programação, me especializando para atuações em diversas áreas.
+      </Text>
 
-        <p style={{ fontSize: '18px', lineHeight: '1.5' }}>
-          Sou formada no curso Técnico de Desenvolvimento de Sistemas, com
-          duração de 18 meses e finalizado em 2025. Além disso, sou formada
-          também nos cursos Técnico de Recursos Humanos e Técnico em
-          Gastronomia, o que me qualifica para atuações mais amplas...
-        </p>
-
-        <h2 style={{ marginTop: '20px', color: '#FFD580' }}>Explore e saiba mais.</h2>
-      </div>
-    </div>
+      <Text
+        fontSize="30px"
+        color="white"
+        mb="0.5%"
+        w="50%"
+      >
+        Seja bem-vinde!
+      </Text>
+      </Flex>
+      <Flex
+        w='80%'
+        justify="center" // Centraliza a imagem horizontalmente
+        align="center" // Centraliza a imagem verticalmente
+        p={{ base: "40px", md: "20px" }} // Padding para a imagem
+      >
+        {/* 5. O componente de Imagem */}
+        <Image
+          src="/minha_foto.png"
+          alt="Minha Foto"
+          borderRadius="full" // Deixa a imagem redonda (opcional)
+          boxSize={{ base: "300px", md: "500px" }} // Tamanho responsivo
+          objectFit="cover" // Evita que a imagem distorça
+          boxShadow="xl" // Adiciona uma sombra legal (opcional)
+        />
+      </Flex>
+      </Flex>
+    </Flex>
   );
 }

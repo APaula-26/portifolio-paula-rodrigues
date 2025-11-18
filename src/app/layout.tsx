@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Provider } from "@/components/ui/provider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,12 +23,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
+  return ( 
+    <html lang="pt" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/*
+          Mova o Provider para DENTRO do <body>
+          Isso resolve o problema de renderização de scripts/elementos.
+        */}
+        <Provider>
+          {children}
+        </Provider>
       </body>
     </html>
   );
