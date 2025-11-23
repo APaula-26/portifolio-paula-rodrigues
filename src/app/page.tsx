@@ -1,7 +1,6 @@
 'use client';
 
 import { Flex, Heading, Text, Image, Button, HStack, Box, Container, SimpleGrid, Icon, Link, VStack } from "@chakra-ui/react";
-// 1. Adicionei os ícones de contato aqui no final da importação
 import { FaPython, FaPhp, FaJava, FaJs, FaLaravel, FaReact, FaNodeJs, FaGithub, FaExternalLinkAlt, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
 import { SiChakraui } from "react-icons/si";
 
@@ -14,7 +13,6 @@ export default function Home() {
     }
   };
 
-  // Dados das Linguagens
   const linguagens = [
     { name: "Python", icon: FaPython, color: "#3776AB" },
     { name: "PHP", icon: FaPhp, color: "#777BB4" },
@@ -22,7 +20,6 @@ export default function Home() {
     { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
   ];
 
-  // Dados dos Frameworks e Libs
   const frameworks = [
     { name: "Laravel", icon: FaLaravel, color: "#FF2D20" },
     { name: "Chakra UI", icon: SiChakraui, color: "#319795" },
@@ -30,19 +27,18 @@ export default function Home() {
     { name: "React", icon: FaReact, color: "#61DAFB" },
   ];
 
-  // Dados dos Projetos
   const projetos = [
     { name: "PWI - Ana Rodrigues", url: "https://github.com/APaula-26/pwi-AnaRodrigues" },
     { name: "PWIII - Paula Rodrigues", url: "https://github.com/APaula-26/pwiii-Paula-Rodrigues" },
     { name: "DSII - Paula Rodrigues", url: "https://github.com/APaula-26/DSII-Paula-Rodrigues" },
   ];
 
-  // Estilo dos Cartões (AGORA BRANCO SÓLIDO)
+  // Estilo dos Cartões
   const glassCardStyle = {
-    bg: "white", // Fundo Branco
+    bg: "white",
     borderRadius: "2xl",
     border: "1px solid rgba(0, 0, 0, 0.05)",
-    boxShadow: "lg", // Sombra mais forte para destacar do fundo estampado
+    boxShadow: "lg",
     p: "20px",
     transition: "all 0.3s ease",
     _hover: { transform: "translateY(-5px)", boxShadow: "2xl" }
@@ -52,17 +48,19 @@ export default function Home() {
     <Box
       w='100%'
       minH="100vh"
-      
-      // --- CONFIGURAÇÃO DA ESTAMPA (PADRÃO DE BOLINHAS) ---
-      bgImage="url('/fundo_.jpg')" 
-      bgPosition="0 0"       // Começa do canto superior
-      bgRepeat="repeat"      // FUNDAMENTAL: Repete a imagem lado a lado
-      bgSize="120px"         // Define o tamanho da "bolinha"
-      bgAttachment="fixed"   // A estampa fica fixa enquanto você rola
-      // ---------------------------------------------------
-
-      color="black" // Mantendo texto preto
+      color="black" 
       fontFamily="sans-serif"
+      
+      // --- SOLUÇÃO DO ERRO: Usando 'style' do React ---
+      // Isso ignora a checagem estrita de tipos do Chakra para backgrounds complexos
+      style={{
+        backgroundImage: "url('/fundo_.jpg')",
+        backgroundPosition: "top left",
+        backgroundRepeat: "repeat",
+        backgroundSize: "120px",
+        backgroundAttachment: "fixed"
+      }}
+      // -----------------------------------------------
     >
       
       {/* --- MENU FLUTUANTE --- */}
@@ -73,7 +71,7 @@ export default function Home() {
         left="50%"
         transform="translateX(-50%)"
         zIndex="999"
-        bg="rgba(255,255,255,0.95)" // Quase sólido
+        bg="rgba(255,255,255,0.95)"
         backdropFilter="blur(15px)"
         borderRadius="full"
         px="30px"
@@ -82,7 +80,7 @@ export default function Home() {
         w={{ base: "95%", md: "auto" }} 
         justify="center"
       >
-        <HStack spacing={{ base: 1, md: 6 }}>
+        <HStack gap={{ base: 1, md: 6 }}>
           {["sobre", "linguagens", "frameworks", "projetos", "contatos"].map((section) => (
              <Button
                key={section}
@@ -90,7 +88,6 @@ export default function Home() {
                variant="ghost"
                color="black"
                fontSize={{ base: "10px", md: "sm" }} 
-               // AQUI ESTÁ A MUDANÇA DO HOVER (Azul com texto branco)
                _hover={{ bg: "#2B6CB0", color: "white" }}
                textTransform="uppercase"
                letterSpacing="wide"
@@ -115,20 +112,22 @@ export default function Home() {
         >
           <Flex direction="column" w={{ base: "100%", md: "55%" }} gap={6}>
             
-            {/* Fundo branco no texto também */}
             <Box p={6} borderRadius="xl" bg="white" boxShadow="lg">
                 <Heading as="h1" size="3xl" fontWeight="extrabold">
-                Olá, sou a <Text as="span" color="#2B6CB0">Paula</Text>! 
+                Olá, sou a <Text as="span" color="#f07109ff">Paula</Text>! 
                 </Heading>
 
-                <Text fontSize="xl" lineHeight="tall" textAlign="justify">
-                  <br />
-                {` Tenho 25 anos, sou formada em Desenvolvimento de Sistemas, na Etec Professor Carmargo Aranha. Durante o curso foram trabalhadas algumas linguagens como: Python, Java Script, Java e PhP. 
-
-                Além disso durante minha formação trabalhei com biblioteca e frameworks como Chakra UI, que inclusive foi utilizada para construção deste portfólio, Laravel, React e outros.
-                
-                Disposta a aprender com o mundo da programação, me especializando para atuação na área educacional.`}
-                </Text>
+                <VStack gap={4} align="stretch" mt={4}>
+                    <Text fontSize="xl" lineHeight="tall" textAlign="justify">
+                        Tenho 25 anos, sou formada em Desenvolvimento de Sistemas, na Etec Professor Carmargo Aranha. Durante o curso foram trabalhadas algumas linguagens como: Python, Java Script, Java e PhP.
+                    </Text>
+                    <Text fontSize="xl" lineHeight="tall" textAlign="justify">
+                        Além disso durante minha formação trabalhei com biblioteca e frameworks como Chakra UI, que inclusive foi utilizada para construção deste portfólio, Laravel, React e outros.
+                    </Text>
+                    <Text fontSize="xl" lineHeight="tall" textAlign="justify">
+                        Disposta a aprender com o mundo da programação, me especializando para atuação na área educacional.
+                    </Text>
+                </VStack>
             </Box>
 
             <Button 
@@ -162,7 +161,7 @@ export default function Home() {
             Linguagens
           </Heading>
           
-          <SimpleGrid columns={{ base: 2, md: 4 }} spacing={6}>
+          <SimpleGrid columns={{ base: 2, md: 4 }} gap={6}>
             {linguagens.map((tech) => (
               <Flex 
                 key={tech.name} 
@@ -186,7 +185,7 @@ export default function Home() {
               Frameworks e Bibliotecas
             </Heading>
             
-            <SimpleGrid columns={{ base: 2, md: 4 }} spacing={6}>
+            <SimpleGrid columns={{ base: 2, md: 4 }} gap={6}>
             {frameworks.map((tech) => (
               <Flex 
                 key={tech.name} 
@@ -211,18 +210,19 @@ export default function Home() {
             </Heading>
             
             <Flex {...glassCardStyle} direction="column" p={8}>
-              <VStack spacing={4} align="center" w="100%"> 
+              <VStack gap={4} align="center" w="100%"> 
                 {projetos.map((proj, index) => (
                     <Link 
                     key={index} 
                     href={proj.url} 
-                    isExternal 
+                    target="_blank" 
+                    rel="noopener noreferrer"
                     _hover={{ textDecoration: 'none' }}
                     w="100%" 
                     maxW="600px" 
                     >
                     <HStack 
-                        bg="gray.100" // Cinza claro para destacar dentro do cartão branco
+                        bg="gray.100" 
                         p={4} 
                         borderRadius="md" 
                         _hover={{ bg: "gray.200", transform: "scale(1.02)" }}
@@ -259,11 +259,11 @@ export default function Home() {
             >
                 {/* Email */}
                 <Link href="mailto:ana.rodrigues490@etec.sp.gov.br" _hover={{ textDecoration: 'none' }}>
-                    <VStack role="group" spacing={3}>
+                    <VStack role="group" gap={3}>
                         <Flex 
                             w="60px" h="60px" 
                             borderRadius="full" 
-                            bg="gray.100" // Cinza claro
+                            bg="gray.100"
                             align="center" justify="center"
                             _groupHover={{ bg: "#2B6CB0", color: "white", transform: "scale(1.1)" }}
                             transition="all 0.3s"
@@ -276,7 +276,7 @@ export default function Home() {
                 </Link>
 
                 {/* Telefone */}
-                <VStack spacing={3}>
+                <VStack gap={3}>
                     <Flex 
                         w="60px" h="60px" 
                         borderRadius="full" 
@@ -292,14 +292,19 @@ export default function Home() {
                 </VStack>
 
                 {/* LinkedIn */}
-                <Link href="https://www.linkedin.com" isExternal _hover={{ textDecoration: 'none' }}>
-                    <VStack role="group" spacing={3}>
+                <Link 
+                    href="https://www.linkedin.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    _hover={{ textDecoration: 'none' }}
+                >
+                    <VStack role="group" gap={3}>
                         <Flex 
                             w="60px" h="60px" 
                             borderRadius="full" 
                             bg="gray.100" 
                             align="center" justify="center"
-                            _groupHover={{ bg: "#0077B5", color: "white", transform: "scale(1.1)" }} // Cor oficial do LinkedIn
+                            _groupHover={{ bg: "#0077B5", color: "white", transform: "scale(1.1)" }} 
                             transition="all 0.3s"
                         >
                             <Icon as={FaLinkedin} w={6} h={6} color="black" _groupHover={{ color: "white" }} />
