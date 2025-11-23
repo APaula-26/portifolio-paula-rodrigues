@@ -7,7 +7,7 @@ import { SiChakraui } from "react-icons/si";
 
 export default function Home() {
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "center" });
